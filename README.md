@@ -51,13 +51,16 @@ brew install --cask gcc-arm-embedded
 ```shell
 brew install openocd
 ```
-安装完成后验证
+- 安装完成后验证
 ```shell
 openocd --version
 ```
 
 # Clion 设置
+
 - File > Settings > Build, Execution, Deployment> Toolchains
-- C Compiler arm-none-eabi-gcc
-- C++ Compiler arm-none-eabi-g++
-- Debugger arm-none-eabi-gdb
+```text
+C Compiler: arm-none-eabi-gcc
+C++ Compiler: arm-none-eabi-g++
+Debugger: arm-none-eabi-gdb
+```
