@@ -12,19 +12,19 @@ set(ARM_TOOLCHAIN_DIR /usr/bin)
 set(CMAKE_C_COMPILER ${TOOLCHAIN_PREFIX}gcc)
 set(CMAKE_ASM_COMPILER ${CMAKE_C_COMPILER})
 set(CMAKE_CXX_COMPILER ${TOOLCHAIN_PREFIX}g++)
+set(CMAKE_OBJCOPY ${ARM_TOOLCHAIN_DIR}/${TOOLCHAIN_PREFIX}objcopy)
+#set(CMAKE_SIZE ${ARM_TOOLCHAIN_DIR}/${TOOLCHAIN_PREFIX}size)
 
 project(GD32F4xx C ASM)
 message(STATUS "Start to deal with the project: ${PROJECT_NAME}")
 
-#GCC
+#GCC编译flags
 set(CMAKE_BUILD_TYPE "Debug")
-set(CMAKE_C_FLAGS "")
-set(MCU_FLAGS "-DCPU_GD32F470 -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16")
-set(CMAKE_C_FLAGS "${MCU_FLAGS} -W -Wall -fno-common -ffunction-sections -fdata-sections -mthumb")
+#set(CMAKE_BUILD_TYPE "Release")
+set(MCU_FLAGS "-DCPU_GD32F450 -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16")
+set(CMAKE_C_FLAGS "${MCU_FLAGS} -W -Wall -fno-common -ffunction-sections -fdata-sections -mthumb") # 公共设置
 set(CMAKE_C_FLAGS_DEBUG "-g -O2")
-
-set(CMAKE_OBJCOPY ${ARM_TOOLCHAIN_DIR}/${TOOLCHAIN_PREFIX}objcopy)
-set(CMAKE_SIZE ${ARM_TOOLCHAIN_DIR}/${TOOLCHAIN_PREFIX}size)
+#set(CMAKE_C_FLAGS_RELEASE "-O3")
 
 
 # Include header files
@@ -54,12 +54,14 @@ target_include_directories(GD32F4xx_driver PUBLIC ${PROJECT_SOURCE_DIR}/Firmware
 target_include_directories(GD32F4xx_driver PUBLIC ${PROJECT_SOURCE_DIR}/Firmware/CMSIS/GD/GD32F4xx/Include)
 
 
-
 # Create executable
+set(LINKER_SCRIPT ${PROJECT_SOURCE_DIR}/Firmware/GD32F4xx_lds/gd32f450z_flash.ld)
+set(CMAKE_EXE_LINKER_FLAGS
+        "--specs=nano.specs -specs=nosys.specs -T${LINKER_SCRIPT} -Wl,-Map=${PROJECT_BINARY_DIR}/${PROJECT_NAME}.map,--cref -Wl,--gc-sections"
+        )
 add_executable(${PROJECT_NAME}.elf ${USER})
 target_link_libraries(${PROJECT_NAME}.elf GD32F4xx_driver)
-set_target_properties(${PROJECT_NAME}.elf PROPERTIES LINK_FLAGS "-T ${PROJECT_SOURCE_DIR}/gd32f4xx_flash.ld")
-
+#set_target_properties(${PROJECT_NAME}.elf PROPERTIES LINK_FLAGS "-T ${PROJECT_SOURCE_DIR}/Firmware/GD32F4xx_lds/gd32f450z_flash.ld")
 
 set(ELF_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.elf)
 set(HEX_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)
