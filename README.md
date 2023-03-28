@@ -9,16 +9,9 @@
 ├─Doc      
 ├─Firmware
 │  ├─CMSIS
-│  │  └─GD
-│  │     └─GD32F4xx
-│  │          ├─Include
-│  │          └─Source
-│  │              ├─ARM
-│  │              └─IAR
 │  ├─GD32F4xx_standard_peripheral
 │  └─GD32F4xx_usb_library
 ├─Hardware
-│  └─Led
 ├─Startup
 └─User
 
