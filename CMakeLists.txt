@@ -5,20 +5,18 @@ set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_STANDARD 99)
 
-#设置GCC工具链,
 set(TOOLCHAIN_PREFIX arm-none-eabi-)
-set(ARM_TOOLCHAIN_DIR /usr/bin)
+set(ARM_TOOLCHAIN_DIR /Applications/ArmGNUToolchain/12.2.mpacbti-rel1/arm-none-eabi/bin)
 
 set(CMAKE_C_COMPILER ${TOOLCHAIN_PREFIX}gcc)
 set(CMAKE_ASM_COMPILER ${CMAKE_C_COMPILER})
 set(CMAKE_CXX_COMPILER ${TOOLCHAIN_PREFIX}g++)
 set(CMAKE_OBJCOPY ${ARM_TOOLCHAIN_DIR}/${TOOLCHAIN_PREFIX}objcopy)
-#set(CMAKE_SIZE ${ARM_TOOLCHAIN_DIR}/${TOOLCHAIN_PREFIX}size)
+set(CMAKE_SIZE ${ARM_TOOLCHAIN_DIR}/${TOOLCHAIN_PREFIX}size)
 
 project(GD32F4xx C ASM)
 message(STATUS "Start to deal with the project: ${PROJECT_NAME}")
 
-#GCC编译flags
 set(CMAKE_BUILD_TYPE "Debug")
 #set(CMAKE_BUILD_TYPE "Release")
 set(MCU_FLAGS "-DCPU_GD32F450 -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16")
