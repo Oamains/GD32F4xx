@@ -53,7 +53,7 @@ target_include_directories(GD32F4xx_driver PUBLIC ${PROJECT_SOURCE_DIR}/Firmware
 
 
 # Create executable
-set(LINKER_SCRIPT ${PROJECT_SOURCE_DIR}/Firmware/GD32F4xx_lds/gd32f450z_flash.ld)
+set(LINKER_SCRIPT ${PROJECT_SOURCE_DIR}/Firmware/GD32F4xx_lds/gd32f4xx_flash.ld)
 set(CMAKE_EXE_LINKER_FLAGS
         "--specs=nano.specs -specs=nosys.specs -T${LINKER_SCRIPT} -Wl,-Map=${PROJECT_BINARY_DIR}/${PROJECT_NAME}.map,--cref -Wl,--gc-sections"
         )
