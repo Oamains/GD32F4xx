@@ -39,6 +39,7 @@ OF SUCH DAMAGE.
 #include "systick.h"
 #include <stdio.h>
 #include "main.h"
+#include "led.h"
 
 /*!
     \brief    main function
@@ -46,9 +47,12 @@ OF SUCH DAMAGE.
     \param[out] none
     \retval     none
 */
-int main(void)
-{
+int main(void) {
     systick_config();
-    while(1) {
+    // LED Init
+    Led_Init();
+    while (1) {
+        // lighting
+        gpio_bit_set(GPIOA, GPIO_PIN_5);
     }
 }
