@@ -11,7 +11,6 @@ ENTRY(Reset_Handler)
 SECTIONS
 {
   __stack_size = DEFINED(__stack_size) ? __stack_size : 2K;
-  __gVectors = ORIGIN(FLASH) + LENGTH(FLASH) - 0x1000;
 /* ISR vectors */
   .vectors :
   {
