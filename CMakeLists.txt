@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_STANDARD 99)
 
 set(TOOLCHAIN_PREFIX arm-none-eabi-)
-set(ARM_TOOLCHAIN_DIR /Applications/ArmGNUToolchain/12.2.mpacbti-rel1/arm-none-eabi/bin)
+set(ARM_TOOLCHAIN_DIR D:\\software\\GUN-Tools-ARM-Embedded\\bin)
 
 set(CMAKE_C_COMPILER ${TOOLCHAIN_PREFIX}gcc)
 set(CMAKE_ASM_COMPILER ${CMAKE_C_COMPILER})
@@ -47,6 +47,7 @@ file(GLOB_RECURSE USER
 
 # Create library
 add_library(GD32F4xx_driver STATIC ${DRIVER})
+
 target_include_directories(GD32F4xx_driver PUBLIC ${PROJECT_SOURCE_DIR}/Firmware/CMSIS)
 target_include_directories(GD32F4xx_driver PUBLIC ${PROJECT_SOURCE_DIR}/Firmware/GD32F4xx_standard_peripheral/Include)
 target_include_directories(GD32F4xx_driver PUBLIC ${PROJECT_SOURCE_DIR}/Firmware/CMSIS/GD/GD32F4xx/Include)
@@ -57,7 +58,8 @@ set(LINKER_SCRIPT ${PROJECT_SOURCE_DIR}/Firmware/GD32F4xx_lds/gd32f4xx_flash.ld)
 set(CMAKE_EXE_LINKER_FLAGS
         "--specs=nano.specs -specs=nosys.specs -T ${LINKER_SCRIPT} -Wl,-Map=${PROJECT_BINARY_DIR}/${PROJECT_NAME}.map,--cref -Wl,--gc-sections"
         )
-add_executable(${PROJECT_NAME}.elf ${USER})
+set(STARTUP ${PROJECT_SOURCE_DIR}/Startup/startup_gd32f450_470.s)
+add_executable(${PROJECT_NAME}.elf ${USER} ${STARTUP})
 target_link_libraries(${PROJECT_NAME}.elf GD32F4xx_driver)
 #set_target_properties(${PROJECT_NAME}.elf PROPERTIES LINK_FLAGS "-T ${PROJECT_SOURCE_DIR}/Firmware/GD32F4xx_lds/gd32f450z_flash.ld")
 
