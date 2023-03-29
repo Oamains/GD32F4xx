@@ -53,6 +53,7 @@ int main(void) {
     Led_Init();
     while (1) {
         // lighting
-        gpio_bit_set(GPIOA, GPIO_PIN_5);
+        gpio_bit_toggle(GPIOA, GPIO_PIN_5);
+        delay_1ms(1000);
     }
 }
