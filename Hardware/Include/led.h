@@ -1,5 +1,5 @@
-#ifndef _LED_H
-#define _LED_H
+#ifndef __LED_H
+#define __LED_H
 
 #include "gd32f4xx.h"
 #include "gd32f4xx_rcu.h"

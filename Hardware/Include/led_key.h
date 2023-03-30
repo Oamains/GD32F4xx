@@ -1,5 +1,5 @@
-#ifndef _LED_KEY_H
-#define _LED_KEY_H
+#ifndef __LED_KEY_H
+#define __LED_KEY_H
 #include "systick.h"
 #include "gd32f4xx_misc.h"
 #include "gd32f4xx_syscfg.h"
