@@ -58,7 +58,6 @@ int main(void) {
     float unicon = 0.0f;
     while (1) {
         unicon += 0.01f;
-
-        printf("unicon : %f", unicon);
+        printf("unicon : %f\n", unicon);
     }
 }
