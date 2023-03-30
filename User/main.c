@@ -37,9 +37,11 @@ OF SUCH DAMAGE.
 
 #include "gd32f4xx.h"
 #include "systick.h"
+#include "gd32f4xx_misc.h"
 #include <stdio.h>
 #include "main.h"
 #include "led.h"
+#include "led_key.h"
 
 /*!
     \brief    main function
@@ -49,11 +51,9 @@ OF SUCH DAMAGE.
 */
 int main(void) {
     systick_config();
-    // LED Init
+    nvic_priority_group_set(NVIC_PRIGROUP_PRE2_SUB2);
     Led_Init();
-    while (1) {
-        // lighting
-        gpio_bit_toggle(GPIOA, GPIO_PIN_5);
-        delay_1ms(1000);
+    Key_Nvic_Key_Init();
+     while (1) {
     }
 }

@@ -3,7 +3,6 @@
 
 #include "gd32f4xx.h"
 #include "gd32f4xx_rcu.h"
-#include "gd32f4xx_rcu.h"
 #include "gd32f4xx_gpio.h"
 
 /**
