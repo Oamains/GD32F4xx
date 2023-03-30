@@ -35,12 +35,11 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 OF SUCH DAMAGE.
 */
 
-#include "gd32f4xx.h"
 #include "systick.h"
 #include "gd32f4xx_misc.h"
-#include <stdio.h>
 #include "main.h"
 #include "led.h"
+#include "usart.h"
 #include "led_key.h"
 
 /*!
@@ -53,7 +52,13 @@ int main(void) {
     systick_config();
     nvic_priority_group_set(NVIC_PRIGROUP_PRE2_SUB2);
     Led_Init();
+    Usart_Init(115200U);
     Key_Nvic_Key_Init();
-     while (1) {
+
+    float unicon = 0.0f;
+    while (1) {
+        unicon += 0.01f;
+
+        printf("unicon : %f", unicon);
     }
 }
