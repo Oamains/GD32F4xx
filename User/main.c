@@ -39,7 +39,7 @@ OF SUCH DAMAGE.
 #include "systick.h"
 #include <stdio.h>
 #include "main.h"
-#include "../Hardware/Include/led.h"
+#include "led.h"
 
 /*!
     \brief    main function
@@ -53,6 +53,7 @@ int main(void) {
     Led_Init();
     while (1) {
         // lighting
-        gpio_bit_set(GPIOA, GPIO_PIN_5);
+        gpio_bit_toggle(GPIOA, GPIO_PIN_5);
+        delay_1ms(1000);
     }
 }
