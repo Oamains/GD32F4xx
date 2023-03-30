@@ -39,7 +39,7 @@ OF SUCH DAMAGE.
 #include "systick.h"
 #include <stdio.h>
 #include "main.h"
-#include "../Hardware/Include/led.h"
+#include "led.h"
 
 /*!
     \brief    main function
