@@ -44,8 +44,31 @@ void usart_str_send(uint8_t *ucstr) {
     }
 }
 
-
+/**
+ * MicroLib库 重写printf
+ * @param ch
+ * @param f
+ * @return
+ */
 int fputc(int ch, FILE *f) {
     usart_send(ch);
     return ch;
+}
+
+
+/**
+ * C 标准库重写printf
+ * @param fd
+ * @param ptr
+ * @param len
+ * @return
+ */
+int _write(int fd, char *ptr, int len)
+{
+    int i;
+    for (i = 0; i < len; i++)
+    {
+        usart_send(*ptr++);
+    }
+    return len;
 }
