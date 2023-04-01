@@ -42,6 +42,7 @@ OF SUCH DAMAGE.
 #include "usart.h"
 #include "led_key.h"
 #include "timer.h"
+#include "pwm.h"
 
 /*!
     \brief    main function
@@ -57,6 +58,8 @@ int main(void) {
     Usart_Init(115200U);
     Timer5_Init(20000, 10000);
     Timer2_Init(10000, 10000);
+    Pwm_Timer_Init(200, 10000);
     while (1) {
+        Pwm_Breathing_Lamp();
     }
 }

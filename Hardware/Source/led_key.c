@@ -44,7 +44,7 @@ void Press_Key_Scan() {
 void EXTI0_IRQHandler(void) {
     if (exti_interrupt_flag_get(EXTI_0) == SET) {
         if (gpio_input_bit_get(GPIOA, GPIO_PIN_0) == SET) {
-            gpio_bit_toggle(LED3_PORT, LED4_PIN);
+            gpio_bit_toggle(LED3_PORT, LED3_PIN);
             printf("key press \n");
         } else {
             printf("key release \n");
