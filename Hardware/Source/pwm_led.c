@@ -13,7 +13,7 @@ static void Pwm_Led_Init() {
     gpio_af_set(PWM_LED_PORT, PWM_LED_AF, PWM_LED_PIN);
 }
 
-void Pwm_Timer_Init(uint16_t period, uint16_t prescaler) {
+void Pwm_Timer_Init(uint16_t prescaler, uint16_t period) {
     timer_parameter_struct timer_init_parameters;
     timer_oc_parameter_struct timer_oc_int_para;
 

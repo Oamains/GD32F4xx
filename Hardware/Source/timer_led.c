@@ -4,14 +4,14 @@
 #include "timer_led.h"
 
 
-void Timer5_Init(uint16_t period, uint16_t prescaler) {
+void Timer5_Init(uint16_t prescaler, uint16_t period) {
 
     rcu_periph_clock_enable(RCU_TIMER5);
     rcu_timer_clock_prescaler_config(RCU_TIMER_PSC_MUL4);
     //初始化TIMER5
     timer_parameter_struct timer_parameters;
-    timer_parameters.period = period - 1;                     /*!< period value */
-    timer_parameters.prescaler = prescaler - 1;               /*!< prescaler value */
+    timer_parameters.period = prescaler - 1;                  /*!< period value */
+    timer_parameters.prescaler = period - 1;                  /*!< prescaler value */
     timer_parameters.alignedmode = TIMER_COUNTER_EDGE;        /*!< aligned mode */
     timer_parameters.counterdirection = TIMER_COUNTER_UP;     /*!< counter direction */
     timer_parameters.clockdivision = TIMER_CKDIV_DIV1;        /*!< clock division value */
@@ -58,7 +58,7 @@ void TIMER5_DAC_IRQHandler(void) {
 }
 
 
-void TIMER2_IRQHandler(void ){
+void TIMER2_IRQHandler(void) {
     if (timer_interrupt_flag_get(TIMER2, TIMER_INT_FLAG_UP) == SET) {
         timer_interrupt_flag_clear(TIMER2, TIMER_INT_FLAG_UP);
         gpio_bit_toggle(LED2_PORT, LED2_PIN);
