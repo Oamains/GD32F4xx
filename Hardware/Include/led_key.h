@@ -8,7 +8,7 @@
 #include "gd32f4xx_syscfg.h"
 #include "gd32f4xx_exti.h"
 #include "led.h"
-#include "usart.h"
+#include "Boot_Game_Usart.h"
 /**
  * 按键初始化
  */

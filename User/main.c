@@ -39,10 +39,10 @@ OF SUCH DAMAGE.
 #include "gd32f4xx_misc.h"
 #include "main.h"
 #include "led.h"
-#include "usart.h"
+#include "Boot_Game_Usart.h"
 #include "led_key.h"
-#include "timer.h"
-#include "pwm.h"
+#include "timer_led.h"
+#include "pwm_led.h"
 
 /*!
     \brief    main function

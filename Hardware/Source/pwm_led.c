@@ -1,7 +1,7 @@
 //
 // Created by Oamains on 2023/4/1.
 //
-#include "pwm.h"
+#include "pwm_led.h"
 
 static void Pwm_Led_Init() {
     // enable the peripherals clock

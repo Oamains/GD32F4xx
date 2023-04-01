@@ -1,8 +1,8 @@
 //
 // Created by Oamains on 2023/4/1.
 //
-#ifndef __USART_H
-#define __USART_H
+#ifndef __BOOT_GAME_USART_H
+#define __BOOT_GAME_USART_H
 
 #include "gd32f4xx.h"
 #include "gd32f4xx_rcu.h"
@@ -27,4 +27,4 @@ void usart_send(uint8_t ucch);
  * @param ucstr
  */
 void usart_str_send(uint8_t *ucstr);
-#endif
+#endif // __BOOT_GAME_USART_H

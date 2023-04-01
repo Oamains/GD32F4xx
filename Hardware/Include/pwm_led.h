@@ -2,13 +2,13 @@
 // Created by Oamains on 2023/4/1.
 //
 
-#ifndef _PWM_H
-#define _PWM_H
+#ifndef _PWM_LED_H
+#define _PWM_LED_H
 
 #include "gd32f4xx.h"
 #include "systick.h"
 #include "gd32f4xx_timer.h"
-#include "usart.h"
+#include "Boot_Game_Usart.h"
 #include "led.h"
 
 #define PWM_LED_RCU             RCU_GPIOA
@@ -25,4 +25,4 @@ void Pwm_Timer_Init(uint16_t period, uint16_t prescaler);
 
 void Pwm_Breathing_Lamp(void);
 
-#endif //_PWM_H
+#endif //_PWM_LED_H
