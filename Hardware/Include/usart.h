@@ -1,3 +1,6 @@
+//
+// Created by Oamains on 2023/4/1.
+//
 #ifndef __USART_H
 #define __USART_H
 
@@ -7,7 +10,6 @@
 #include "gd32f4xx_usart.h"
 #include <stdio.h>
 
-#define __GNUC__
 /**
  * 串口初始化
  * @param baudval  数据传输波特率(MHz)

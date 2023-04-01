@@ -41,6 +41,7 @@ OF SUCH DAMAGE.
 #include "led.h"
 #include "usart.h"
 #include "led_key.h"
+#include "timer.h"
 
 /*!
     \brief    main function
@@ -51,10 +52,11 @@ OF SUCH DAMAGE.
 int main(void) {
     systick_config();
     nvic_priority_group_set(NVIC_PRIGROUP_PRE2_SUB2);
+    Key_Nvic_Key_Init();
     Led_Init();
     Usart_Init(115200U);
-    Key_Nvic_Key_Init();
-
+    Timer5_Init(20000, 10000);
+    Timer2_Init(10000, 10000);
     while (1) {
     }
 }

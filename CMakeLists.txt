@@ -44,8 +44,8 @@ file(GLOB_RECURSE DRIVER
 file(GLOB_RECURSE USER ${PROJECT_SOURCE_DIR}/User/*.c)
 
 # 创建库
-add_library(GD32F4xx_driver STATIC ${DRIVER})
-set(STARTUP ${PROJECT_SOURCE_DIR}/Startup/startup_gd32f450.S)
+add_library(GD32F4xx_driver STATIC ${DRIVER} Hardware/Source/timer.c)
+set(STARTUP ${PROJECT_SOURCE_DIR}/Startup/startup_gd32f450.S Hardware/Include/timer.h)
 
 target_include_directories(GD32F4xx_driver PUBLIC ${PROJECT_SOURCE_DIR}/Firmware/CMSIS)
 target_include_directories(GD32F4xx_driver PUBLIC ${PROJECT_SOURCE_DIR}/Firmware/GD32F4xx_standard_peripheral/Include)

@@ -165,8 +165,7 @@ typedef enum IRQn
     TIMER7_TRG_CMT_TIMER13_IRQn  = 45,     /*!< TIMER7 trigger and commutation and TIMER13 interrupts    */
     TIMER7_Channel_IRQn          = 46,     /*!< TIMER7 channel capture compare interrupt                 */
     DMA0_Channel7_IRQn           = 47,     /*!< DMA0 channel7 interrupt                                  */
-    
-#if defined (GD32F450) || defined (GD32F470)
+//#if defined (GD32F450) || defined (GD32F470)
     EXMC_IRQn                    = 48,     /*!< EXMC interrupt                                           */
     SDIO_IRQn                    = 49,     /*!< SDIO interrupt                                           */
     TIMER4_IRQn                  = 50,     /*!< TIMER4 interrupt                                         */
@@ -208,7 +207,7 @@ typedef enum IRQn
     TLI_IRQn                     = 88,     /*!< TLI interrupt                                            */
     TLI_ER_IRQn                  = 89,     /*!< TLI error interrupt                                      */
     IPA_IRQn                     = 90,     /*!< IPA interrupt                                            */
-#endif /* GD32F450 and GD32F470 */
+//#endif /* GD32F450 and GD32F470 */
 
 #if defined (GD32F405) || defined (GD32F425)
     SDIO_IRQn                    = 49,     /*!< SDIO interrupt                                           */
@@ -365,4 +364,4 @@ typedef enum {ERROR = 0, SUCCESS = !ERROR} ErrStatus;
 #ifdef __cplusplus
 }
 #endif
-#endif 
+#endif

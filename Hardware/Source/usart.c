@@ -1,3 +1,6 @@
+//
+// Created by Oamains on 2023/4/1.
+//
 #include "usart.h"
 
 void Usart_Init(uint32_t baudval) {
