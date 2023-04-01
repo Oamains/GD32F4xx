@@ -55,10 +55,6 @@ int main(void) {
     Usart_Init(115200U);
     Key_Nvic_Key_Init();
 
-    int unicon = 1;
     while (1) {
-        unicon += 1;
-        printf("unicon : %d \n", unicon );
-        delay_1ms(1000);
     }
 }

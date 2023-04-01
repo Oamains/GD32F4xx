@@ -8,4 +8,6 @@ void Led_Init() {
     gpio_mode_set(GPIOA, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO_PIN_5);
     // set GPIO output type and speed
     gpio_output_options_set(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_5);
+
+//    gpio_bit_set(GPIOA,GPIO_PIN_5);
 }

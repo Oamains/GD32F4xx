@@ -42,6 +42,10 @@ void EXTI0_IRQHandler(void) {
     if (exti_interrupt_flag_get(EXTI_0) == SET) {
         if (gpio_input_bit_get(GPIOA, GPIO_PIN_0) == SET) {
             gpio_bit_toggle(GPIOA, GPIO_PIN_5);
+            printf("key press \n");
+        }else {
+            printf("key release \n");
         }
+        exti_interrupt_flag_clear(EXTI_0);
     }
 }
