@@ -42,7 +42,18 @@ void usart_str_send(uint8_t *ucstr) {
         usart_send(*ucstr++);
     }
 }
-int _write(int fd, char *ptr, int len) {
-    usart_send(*ptr);
+
+int fputc(int ch, FILE *f) {
+    usart_send(ch);
+    return ch;
+}
+
+int _write(int file, char *ptr, int len)
+{
+    int i;
+    for (i = 0; i < len; i++)
+    {
+        usart_send(*ptr++);
+    }
     return len;
 }

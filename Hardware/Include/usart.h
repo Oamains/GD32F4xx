@@ -6,7 +6,6 @@
 #include "gd32f4xx_gpio.h"
 #include "gd32f4xx_usart.h"
 #include <stdio.h>
-#include <stdint.h>
 
 #define __GNUC__
 /**
@@ -26,6 +25,4 @@ void usart_send(uint8_t ucch);
  * @param ucstr
  */
 void usart_str_send(uint8_t *ucstr);
-
-int _write(int fd, char *ptr, int len);
 #endif
