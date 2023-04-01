@@ -26,14 +26,4 @@ void Led_Init() {
     gpio_mode_set(LED3_PORT, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, LED3_PIN);
     // set GPIO output type and speed
     gpio_output_options_set(LED3_PORT, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, LED3_PIN);
-
-
-    // enable the peripherals clock
-    rcu_periph_clock_enable(LED4_RCU_PORT);
-    // set GPIO mode
-    gpio_mode_set(LED4_PORT, GPIO_MODE_AF, GPIO_PUPD_NONE, LED4_PIN);
-    // set GPIO output type and speed
-    gpio_output_options_set(LED4_PORT, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, LED4_PIN);
-
-    gpio_af_set(LED4_PORT, GPIO_AF_1, LED4_PIN);
 }
