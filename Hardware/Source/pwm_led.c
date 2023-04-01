@@ -44,7 +44,6 @@ void Pwm_Timer_Init(uint16_t prescaler, uint16_t period) {
     timer_enable(PWM_TIMER);
 }
 
-
 void Pwm_Breathing_Lamp(void) {
     static uint16_t value = 0;
     static uint8_t direct = 0;
@@ -59,3 +58,20 @@ void Pwm_Breathing_Lamp(void) {
     delay_1ms(50);
     printf("PWM LED4 Output Pulse Value:%d \n", value);
 }
+
+//static uint8_t state = 1;
+//void EXTI0_IRQHandler(void) {
+//    if (exti_interrupt_flag_get(EXTI_0) == SET) {
+//        if ( state) {
+//            timer_channel_output_pulse_value_config(PWM_TIMER, PWM_TIMER_CHANNEL, 0);
+//            timer_channel_output_state_config(PWM_TIMER, PWM_TIMER_CHANNEL, TIMER_CCX_DISABLE);
+//            timer_disable(PWM_TIMER);
+//            state = 0;
+//        } else {
+//            timer_enable(PWM_TIMER);
+//            timer_channel_output_state_config(PWM_TIMER, PWM_TIMER_CHANNEL, TIMER_CCX_ENABLE);
+//            state = 1;
+//        }
+//        exti_interrupt_flag_clear(EXTI_0);
+//    }
+//}
