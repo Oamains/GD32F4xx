@@ -6,7 +6,9 @@
 #include "gd32f4xx_gpio.h"
 #include "gd32f4xx_usart.h"
 #include <stdio.h>
+#include <stdint.h>
 
+#define __GNUC__
 /**
  * 串口初始化
  * @param baudval  数据传输波特率(MHz)
@@ -25,4 +27,5 @@ void usart_send(uint8_t ucch);
  */
 void usart_str_send(uint8_t *ucstr);
 
+int _write(int fd, char *ptr, int len);
 #endif
