@@ -56,7 +56,7 @@ int main(void) {
     Led_Init();
     Usart_Init(115200U);
     Timer5_Init(20000, 10000);
-    Timer2_Init(10000, 10000);
+    Timer2_Init(100000, 10000);
     while (1) {
     }
 }
