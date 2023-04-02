@@ -35,6 +35,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 OF SUCH DAMAGE.
 */
 
+#include <string.h>
 #include "systick.h"
 #include "gd32f4xx_misc.h"
 #include "main.h"
@@ -55,11 +56,17 @@ int main(void) {
     nvic_priority_group_set(NVIC_PRIGROUP_PRE2_SUB2);
     Key_Nvic_Key_Init();
     Led_Init();
-    Usart_Init(115200U);
+    Usart_Send_Init(115200U);
     Timer5_Init(20000, 10000);
     Timer2_Init(10000, 10000);
     Pwm_Timer_Init(200, 10000);
     while (1) {
         Pwm_Breathing_Lamp();
+        if (receive_complete) {
+            printf("data size : %d\t ==> data : %s\t\n", receive_size, receive_buff_cache);
+            memset(receive_buff_cache, 0, receive_size);
+            receive_complete = 0;
+            receive_size = 0;
+        }
     }
 }

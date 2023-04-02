@@ -56,7 +56,7 @@ void Pwm_Breathing_Lamp(void) {
     }
     timer_channel_output_pulse_value_config(PWM_TIMER, PWM_TIMER_CHANNEL, value);
     delay_1ms(50);
-    printf("PWM LED4 Output Pulse Value:%d \n", value);
+//    printf("PWM LED4 Output Pulse Value:%d \n", value);
 }
 
 //static uint8_t state = 1;

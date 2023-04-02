@@ -53,7 +53,7 @@ void TIMER5_DAC_IRQHandler(void) {
     if (timer_interrupt_flag_get(TIMER5, TIMER_INT_FLAG_UP) == SET) {
         timer_interrupt_flag_clear(TIMER5, TIMER_INT_FLAG_UP);
         gpio_bit_toggle(LED1_PORT, LED1_PIN);
-        printf("TIMER5 LED1 toggle status \n");
+//        printf("TIMER5 LED1 toggle status \n");
     }
 }
 
@@ -62,6 +62,6 @@ void TIMER2_IRQHandler(void) {
     if (timer_interrupt_flag_get(TIMER2, TIMER_INT_FLAG_UP) == SET) {
         timer_interrupt_flag_clear(TIMER2, TIMER_INT_FLAG_UP);
         gpio_bit_toggle(LED2_PORT, LED2_PIN);
-        printf("TIMER5 LED2 toggle status \n");
+//        printf("TIMER5 LED2 toggle status \n");
     }
 }

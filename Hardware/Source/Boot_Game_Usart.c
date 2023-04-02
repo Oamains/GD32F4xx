@@ -3,8 +3,11 @@
 //
 #include "Boot_Game_Usart.h"
 
-void Usart_Init(uint32_t baudval) {
+uint8_t receive_buff_cache[USART_RECEIVE_SIZE];
+uint16_t receive_size = 0;
+uint8_t receive_complete = 0;
 
+void Usart_Send_Init(uint32_t baudval) {
     // enabled usart clock
     rcu_periph_clock_enable(RCU_USART0);
     rcu_periph_clock_enable(GPIOA);
@@ -28,7 +31,12 @@ void Usart_Init(uint32_t baudval) {
     // enabled usart 0
     usart_enable(USART0);
     usart_transmit_config(USART0, USART_TRANSMIT_ENABLE);
-//    usart_receive_config(USART0,);
+    usart_receive_config(USART0, USART_RECEIVE_ENABLE);
+
+    // config usart irq
+    nvic_irq_enable(USART0_IRQn, 2U, 2U);
+    usart_interrupt_enable(USART0, USART_INT_RBNE);
+    usart_interrupt_enable(USART0, USART_INT_IDLE);
 }
 
 
@@ -51,12 +59,22 @@ int fputc(int ch, FILE *f) {
     return ch;
 }
 
-int _write(int file, char *ptr, int len)
-{
+int _write(int file, char *ptr, int len) {
     int i;
-    for (i = 0; i < len; i++)
-    {
+    for (i = 0; i < len; i++) {
         usart_send(*ptr++);
     }
     return len;
+}
+
+void USART0_IRQHandler(void) {
+    if (usart_interrupt_flag_get(USART0, USART_INT_FLAG_RBNE) == SET) {
+        receive_buff_cache[receive_size++] = usart_data_receive(USART0);
+    }
+
+    if (usart_interrupt_flag_get(USART0, USART_INT_FLAG_IDLE) == SET) {
+        usart_data_receive(USART0);
+        receive_buff_cache[receive_size] = '\0';
+        receive_complete = 1;
+    }
 }
