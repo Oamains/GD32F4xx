@@ -44,6 +44,7 @@ OF SUCH DAMAGE.
 #include "led_key.h"
 #include "timer_led.h"
 #include "pwm_led.h"
+#include "led_light_flow.h"
 
 /*!
     \brief    main function
@@ -56,15 +57,16 @@ int main(void) {
     nvic_priority_group_set(NVIC_PRIGROUP_PRE2_SUB2);
     Key_Nvic_Key_Init();
     Led_Init();
-//    Usart_Send_Init(115200U);
-//    Timer5_Init(20000, 10000);
-//    Timer2_Init(10000, 10000);
+    Usart_Send_Init(115200U);
+    Timer5_Init(20000, 10000);
+    Timer2_Init(10000, 10000);
     Pwm_Timer_Init(200, 10000);
 
     while (1) {
         Pwm_Breathing_Lamp();
         if (receive_complete) {
             printf("data size : %d\t ==> data : %s\t\n", receive_size, receive_buff_cache);
+            Usart_Switch_Led_State(receive_buff_cache);
             memset(receive_buff_cache, 0, receive_size);
             receive_complete = 0;
             receive_size = 0;
