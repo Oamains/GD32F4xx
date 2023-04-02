@@ -40,7 +40,7 @@ OF SUCH DAMAGE.
 #include "gd32f4xx_misc.h"
 #include "main.h"
 #include "led.h"
-#include "Boot_Game_Usart.h"
+#include "game_usart.h"
 #include "led_key.h"
 #include "timer_led.h"
 #include "pwm_led.h"
@@ -60,6 +60,7 @@ int main(void) {
     Timer5_Init(20000, 10000);
     Timer2_Init(10000, 10000);
     Pwm_Timer_Init(200, 10000);
+
     while (1) {
         Pwm_Breathing_Lamp();
         if (receive_complete) {

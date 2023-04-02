@@ -9,7 +9,7 @@
 #include "gd32f4xx_syscfg.h"
 #include "gd32f4xx_exti.h"
 #include "gd32f4xx_timer.h"
-#include "Boot_Game_Usart.h"
+#include "game_usart.h"
 #include "led.h"
 
 

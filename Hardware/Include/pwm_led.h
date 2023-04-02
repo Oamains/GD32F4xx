@@ -8,7 +8,7 @@
 #include "gd32f4xx.h"
 #include "systick.h"
 #include "gd32f4xx_timer.h"
-#include "Boot_Game_Usart.h"
+#include "game_usart.h"
 #include "led.h"
 
 #define PWM_LED_RCU             RCU_GPIOA
