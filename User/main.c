@@ -56,9 +56,9 @@ int main(void) {
     nvic_priority_group_set(NVIC_PRIGROUP_PRE2_SUB2);
     Key_Nvic_Key_Init();
     Led_Init();
-    Usart_Send_Init(115200U);
-    Timer5_Init(20000, 10000);
-    Timer2_Init(10000, 10000);
+//    Usart_Send_Init(115200U);
+//    Timer5_Init(20000, 10000);
+//    Timer2_Init(10000, 10000);
     Pwm_Timer_Init(200, 10000);
 
     while (1) {

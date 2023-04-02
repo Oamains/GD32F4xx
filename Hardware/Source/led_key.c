@@ -25,7 +25,8 @@ void Key_Nvic_Key_Init() {
     nvic_irq_enable(EXTI0_IRQn, 3U, 3U);
     // set nvic line connect
     syscfg_exti_line_config(EXTI_SOURCE_GPIOA, EXTI_SOURCE_PIN0);
-    exti_init(EXTI_0, EXTI_INTERRUPT, EXTI_TRIG_BOTH);
+//    exti_init(EXTI_0, EXTI_INTERRUPT, EXTI_TRIG_BOTH);
+    exti_init(EXTI_0, EXTI_INTERRUPT, EXTI_TRIG_FALLING);
     exti_interrupt_enable(EXTI_0);
     exti_interrupt_flag_clear(EXTI_0);
 }
@@ -41,14 +42,14 @@ void Press_Key_Scan() {
 }
 
 
-void EXTI0_IRQHandler(void) {
-    if (exti_interrupt_flag_get(EXTI_0) == SET) {
-        if (gpio_input_bit_get(GPIOA, GPIO_PIN_0) == SET) {
-            gpio_bit_toggle(LED3_PORT, LED3_PIN);
-            printf("key press \n");
-        } else {
-            printf("key release \n");
-        }
-        exti_interrupt_flag_clear(EXTI_0);
-    }
-}
+//void EXTI0_IRQHandler(void) {
+//    if (exti_interrupt_flag_get(EXTI_0) == SET) {
+//        if (gpio_input_bit_get(GPIOA, GPIO_PIN_0) == SET) {
+//            gpio_bit_toggle(LED3_PORT, LED3_PIN);
+//            printf("key press \n");
+//        } else {
+//            printf("key release \n");
+//        }
+//        exti_interrupt_flag_clear(EXTI_0);
+//    }
+//}

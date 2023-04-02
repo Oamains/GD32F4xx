@@ -59,19 +59,26 @@ void Pwm_Breathing_Lamp(void) {
 //    printf("PWM LED4 Output Pulse Value:%d \n", value);
 }
 
-//static uint8_t state = 1;
-//void EXTI0_IRQHandler(void) {
-//    if (exti_interrupt_flag_get(EXTI_0) == SET) {
-//        if ( state) {
-//            timer_channel_output_pulse_value_config(PWM_TIMER, PWM_TIMER_CHANNEL, 0);
-//            timer_channel_output_state_config(PWM_TIMER, PWM_TIMER_CHANNEL, TIMER_CCX_DISABLE);
-//            timer_disable(PWM_TIMER);
-//            state = 0;
-//        } else {
-//            timer_enable(PWM_TIMER);
-//            timer_channel_output_state_config(PWM_TIMER, PWM_TIMER_CHANNEL, TIMER_CCX_ENABLE);
-//            state = 1;
-//        }
-//        exti_interrupt_flag_clear(EXTI_0);
-//    }
-//}
+static uint8_t state = 1;
+
+void EXTI0_IRQHandler(void) {
+    if (exti_interrupt_flag_get(EXTI_0) == SET) {
+        if (state) {
+            timer_channel_output_state_config(PWM_TIMER,PWM_TIMER_CHANNEL,TIMER_CCX_DISABLE);
+            timer_disable(PWM_TIMER);
+            timer_flag_clear(PWM_TIMER,TIMER_FLAG_CH0);
+            state = 0;
+            if (gpio_input_bit_get(LED4_PORT, LED4_PIN) == SET) {
+                gpio_bit_toggle(LED4_PORT, LED4_PIN);
+            }
+        } else {
+            if (gpio_input_bit_get(LED4_PORT, LED4_PIN) == RESET) {
+                gpio_bit_toggle(LED4_PORT, LED4_PIN);
+            }
+            Pwm_Timer_Init(200, 10000);
+            timer_channel_output_state_config(PWM_TIMER,PWM_TIMER_CHANNEL,TIMER_CCX_ENABLE);
+            state = 1;
+        }
+        exti_interrupt_flag_clear(EXTI_0);
+    }
+}
