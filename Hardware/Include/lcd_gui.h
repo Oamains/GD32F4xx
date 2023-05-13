@@ -6,6 +6,9 @@
 #define LCD_GUI_H
 
 #include <stdint-gcc.h>
+#include "lcdfont.h"
+#include "math.h"
+#include "st7789_lcd.h"
 
 #define COLOR_GOLDEN   (0XFEA0)//金色
 #define COLOR_SILVER   (0XC618)//银色

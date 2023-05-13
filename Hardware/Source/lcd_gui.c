@@ -1,7 +1,4 @@
 #include "lcd_gui.h"
-#include "lcdfont.h"
-#include "math.h"
-#include "st7789_lcd.h"
 //
 // Created by Oamains on 2023/5/13.
 //
