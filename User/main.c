@@ -76,20 +76,28 @@ int main(void) {
 //        }
 //    }
 
-/* 扩展板 */
+    /* 扩展板 */
     Lcd_Init();                // spi lcd初始化
-
-    /* SPI LCD */
-    LCD_Fill(0, 0, LCD_W, LCD_H, COLOR_BLUE); // 深蓝色 背景
-    LCD_ShowPicture((LCD_W - 222) / 2, 0, 222, 60, gImage_lCKFB);         // 显示图片
-    LCD_DrawRectangle(10, 60 + 10, LCD_W - 10, LCD_H - 10, COLOR_BLACK);   // 绘制一个矩形
-    LCD_ShowChinese(15, 60 + 10 + 5, "开始游戏", COLOR_WHITE, COLOR_BLUE, 12, 0);   // 显示12汉字字符串
-    LCD_ShowChinese(15, 60 + 10 + 5 + 12, "开始游戏", COLOR_WHITE, COLOR_BLUE, 16, 0);    // 显示16汉字字符串
-    LCD_ShowChinese(15, 60 + 10 + 5 + 12 + 16, "开始游戏", COLOR_WHITE, COLOR_BLUE, 24, 0);    // 显示24汉字字符串
-    LCD_ShowChinese(15, 60 + 10 + 5 + 12 + 16 + 24, "开始游戏", COLOR_WHITE, COLOR_BLUE, 32, 0);   // 显示32汉字字符串
-    LCD_ShowString(15, 60 + 10 + 5 + 12 + 16 + 24 + 32, "123abc", COLOR_WHITE, COLOR_BLUE, 16, 0);  // 显示16字符串
-    LCD_ShowString(15, 60 + 10 + 5 + 12 + 16 + 24 + 32 + 16, "123abc", COLOR_WHITE, COLOR_BLUE, 24, 0);  // 显示24字符串
-    LCD_ShowString(15, 60 + 10 + 5 + 12 + 16 + 24 + 32 + 16 + 24, "123abc", COLOR_WHITE, COLOR_BLUE, 32, 0);  // 显示32字符串
+    /* SPI LCD // 深蓝色 背景 */
+    LCD_Fill(0, 0, LCD_W, LCD_H, COLOR_BLUE);
+    // 显示图片
+    LCD_ShowPicture((LCD_W - 222) / 2, 0, 222, 60, gImage_lCKFB);
+    // 绘制一个矩形
+    LCD_DrawRectangle(10, 60 + 10, LCD_W - 10, LCD_H - 10, COLOR_BLACK);
+    // 显示12汉字字符串
+//    LCD_ShowChinese(15, 60 + 10 + 5, "开始游戏", COLOR_WHITE, COLOR_BLUE, 12, 0);
+//    // 显示16汉字字符串
+//    LCD_ShowChinese(15, 60 + 10 + 5 + 12, "开始游戏", COLOR_WHITE, COLOR_BLUE, 16, 0);
+//    // 显示24汉字字符串
+//    LCD_ShowChinese(15, 60 + 10 + 5 + 12 + 16, "开始游戏", COLOR_WHITE, COLOR_BLUE, 24, 0);
+//    // 显示32汉字字符串
+//    LCD_ShowChinese(15, 60 + 10 + 5 + 12 + 16 + 24, "开始游戏", COLOR_WHITE, COLOR_BLUE, 32, 0);
+    // 显示16字符串
+    LCD_ShowString(15, 60 + 10 + 5 + 12 + 16 + 24 + 32, "123abc", COLOR_WHITE, COLOR_BLUE, 16, 0);
+    // 显示24字符串
+    LCD_ShowString(15, 60 + 10 + 5 + 12 + 16 + 24 + 32 + 16, "123abc", COLOR_WHITE, COLOR_BLUE, 24, 0);
+    // 显示32字符串
+    LCD_ShowString(15, 60 + 10 + 5 + 12 + 16 + 24 + 32 + 16 + 24, "123abc", COLOR_WHITE, COLOR_BLUE, 32, 0);
 
     while (1);
 }
