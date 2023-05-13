@@ -5,6 +5,8 @@
 #ifndef LCD_GUI_H
 #define LCD_GUI_H
 
+#include <stdint-gcc.h>
+
 #define COLOR_GOLDEN   (0XFEA0)//金色
 #define COLOR_SILVER   (0XC618)//银色
 #define COLOR_BRONZE   (0XBB86)//古铜
