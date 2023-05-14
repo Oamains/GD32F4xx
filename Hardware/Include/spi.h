@@ -2,16 +2,27 @@
 // Created by Oamains on 2023/5/13.
 //
 
-#ifndef SPI_H
-#define SPI_H
+#ifndef _SPI_H
+#define _SPI_H
 
 #include "gd32f4xx.h"
 #include "systick.h"
 
-void Spi4_Init(void);
+/**
+ * lcd spi 初始化
+ */
+void Spi_Init(void);
 
-void Spi4_Write(uint8_t dat);
+/**
+ * lcd spi 写数据
+ * @param dat
+ */
+void Spi_Write(uint8_t dat);
 
-uint8_t Spi4_Read(void);
+/**
+ * lcd spi 读数据
+ * @return
+ */
+uint8_t Spi_Read(void);
 
-#endif //SPI_H
+#endif //_SPI_H

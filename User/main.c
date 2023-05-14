@@ -45,9 +45,9 @@ OF SUCH DAMAGE.
 #include "timer_led.h"
 #include "pwm_led.h"
 #include "led_light_flow.h"
-#include "lcd_gui.h"
-#include "st7789_lcd.h"
-#include "pic.h"
+#include "lcd.h"
+#include "image1.h"
+#include "image2lcd.h"
 
 /*!
     \brief    main function
@@ -59,45 +59,45 @@ int main(void) {
     systick_config();
     nvic_priority_group_set(NVIC_PRIGROUP_PRE2_SUB2);
     Key_Nvic_Key_Init();
-    Led_Init();
     Usart_Send_Init(115200U);
-    Timer5_Init(20000, 10000);
-    Timer2_Init(10000, 10000);
-    Pwm_Timer_Init(200, 10000);
+    LCD_Init();
+    uint8_t x = 0;
+    while (1) {
+#if 1
+        switch (x) {
 
-//    while (1) {
-//        Pwm_Breathing_Lamp();
-//        if (receive_complete) {
-//            printf("data size : %d\t ==> data : %s\t\n", receive_size, receive_buff_cache);
-//            Usart_Switch_Led_State(receive_buff_cache);
-//            memset(receive_buff_cache, 0, receive_size);
-//            receive_complete = 0;
-//            receive_size = 0;
-//        }
-//    }
-
-    /* 扩展板 */
-    Lcd_Init();                // spi lcd初始化
-    /* SPI LCD // 深蓝色 背景 */
-    LCD_Fill(0, 0, LCD_W, LCD_H, COLOR_BLUE);
-    // 显示图片
-    LCD_ShowPicture((LCD_W - 222) / 2, 0, 222, 60, gImage_lCKFB);
-    // 绘制一个矩形
-    LCD_DrawRectangle(10, 60 + 10, LCD_W - 10, LCD_H - 10, COLOR_BLACK);
-    // 显示12汉字字符串
-//    LCD_ShowChinese(15, 60 + 10 + 5, "开始游戏", COLOR_WHITE, COLOR_BLUE, 12, 0);
-//    // 显示16汉字字符串
-//    LCD_ShowChinese(15, 60 + 10 + 5 + 12, "开始游戏", COLOR_WHITE, COLOR_BLUE, 16, 0);
-//    // 显示24汉字字符串
-//    LCD_ShowChinese(15, 60 + 10 + 5 + 12 + 16, "开始游戏", COLOR_WHITE, COLOR_BLUE, 24, 0);
-//    // 显示32汉字字符串
-//    LCD_ShowChinese(15, 60 + 10 + 5 + 12 + 16 + 24, "开始游戏", COLOR_WHITE, COLOR_BLUE, 32, 0);
-    // 显示16字符串
-    LCD_ShowString(15, 60 + 10 + 5 + 12 + 16 + 24 + 32, "123abc", COLOR_WHITE, COLOR_BLUE, 16, 0);
-    // 显示24字符串
-    LCD_ShowString(15, 60 + 10 + 5 + 12 + 16 + 24 + 32 + 16, "123abc", COLOR_WHITE, COLOR_BLUE, 24, 0);
-    // 显示32字符串
-    LCD_ShowString(15, 60 + 10 + 5 + 12 + 16 + 24 + 32 + 16 + 24, "123abc", COLOR_WHITE, COLOR_BLUE, 32, 0);
-
-    while (1);
+            case 1:
+                LCD_Clear(WHITE);
+                break;
+            case 2:
+                LCD_Clear(BLACK);
+                break;
+            case 3:
+                LCD_Clear(RED);
+                break;
+            case 4:
+                LCD_Clear(GREEN);
+                break;
+            case 5:
+                LCD_Clear(BLUE);
+                break;
+            case 6:
+                image_display(10, 20, (uint8_t *) gImage_logo);
+                break;
+            case 7:
+                image_display(10, 120, (uint8_t *) gImage_rou);
+                break;
+            case 8:
+                image_display(10, 220, (uint8_t *) gImage_qingcai);
+                break;
+        }
+#endif
+        POINT_COLOR = RED;
+        LCD_ShowString(30, 70, 200, 16, 16, "TFTLCD TEST");
+        LCD_ShowString(30, 90, 200, 16, 16, "WWW.51TFT.COM");
+        LCD_ShowString(30, 110, 200, 16, 16, "2017/9/5");
+        x++;
+        if (x == 9)x = 0;
+        delay_1ms(100);
+    }
 }
