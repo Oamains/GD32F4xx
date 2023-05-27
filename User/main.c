@@ -57,4 +57,7 @@ int main(void) {
     nvic_priority_group_set(NVIC_PRIGROUP_PRE2_SUB2);
     Key_Nvic_Key_Init();
     Usart_Send_Init(115200U);
+    while (1) {
+
+    }
 }

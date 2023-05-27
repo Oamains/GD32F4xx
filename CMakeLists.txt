@@ -33,7 +33,7 @@ include_directories(${PROJECT_SOURCE_DIR}/Firmware/CMSIS/GD/GD32F4xx/Include)
 include_directories(${PROJECT_SOURCE_DIR}/Firmware/GD32F4xx_standard_peripheral/Include)
 include_directories(${PROJECT_SOURCE_DIR}/Hardware/Include)
 include_directories(${PROJECT_SOURCE_DIR}/User)
-
+include(CMakeListsPrivate.txt)
 # 源文件
 file(GLOB_RECURSE DRIVER
         ${PROJECT_SOURCE_DIR}/Firmware/GD32F4xx_standard_peripheral/Source/*.c
@@ -45,6 +45,7 @@ file(GLOB_RECURSE USER ${PROJECT_SOURCE_DIR}/User/*.c)
 # 设置条件编译为GD32F450
 add_compile_definitions(GD32F470)
 # 创建库
+#add_library(GD32F4xx_driver STATIC ${DRIVER} ${CUSTOM_DRIVER})
 add_library(GD32F4xx_driver STATIC ${DRIVER})
 set(STARTUP ${PROJECT_SOURCE_DIR}/Startup/startup_gd32f450.s)
 
