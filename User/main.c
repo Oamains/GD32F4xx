@@ -45,9 +45,6 @@ OF SUCH DAMAGE.
 #include "timer_led.h"
 #include "pwm_led.h"
 #include "led_light_flow.h"
-#include "lcd.h"
-#include "image1.h"
-#include "image2lcd.h"
 
 /*!
     \brief    main function
@@ -60,44 +57,4 @@ int main(void) {
     nvic_priority_group_set(NVIC_PRIGROUP_PRE2_SUB2);
     Key_Nvic_Key_Init();
     Usart_Send_Init(115200U);
-    LCD_Init();
-    uint8_t x = 0;
-    while (1) {
-#if 1
-        switch (x) {
-
-            case 1:
-                LCD_Clear(WHITE);
-                break;
-            case 2:
-                LCD_Clear(BLACK);
-                break;
-            case 3:
-                LCD_Clear(RED);
-                break;
-            case 4:
-                LCD_Clear(GREEN);
-                break;
-            case 5:
-                LCD_Clear(BLUE);
-                break;
-            case 6:
-                image_display(10, 20, (uint8_t *) gImage_logo);
-                break;
-            case 7:
-                image_display(10, 120, (uint8_t *) gImage_rou);
-                break;
-            case 8:
-                image_display(10, 220, (uint8_t *) gImage_qingcai);
-                break;
-        }
-#endif
-        POINT_COLOR = RED;
-        LCD_ShowString(30, 70, 200, 16, 16, "TFTLCD TEST");
-        LCD_ShowString(30, 90, 200, 16, 16, "WWW.51TFT.COM");
-        LCD_ShowString(30, 110, 200, 16, 16, "2017/9/5");
-        x++;
-        if (x == 9)x = 0;
-        delay_1ms(100);
-    }
 }
