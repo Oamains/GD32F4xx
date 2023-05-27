@@ -1,0 +1,4 @@
+# lvgl
+#include_directories(${PROJECT_SOURCE_DIR}/Firmware/lvgl)
+#include_directories(${PROJECT_SOURCE_DIR}/Firmware/lvgl/src)
+#file(GLOB_RECURSE CUSTOM_DRIVER ${PROJECT_SOURCE_DIR}/Firmware/lvgl/*.*)
