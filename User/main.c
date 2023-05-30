@@ -37,7 +37,7 @@ OF SUCH DAMAGE.
 
 #include <string.h>
 #include "systick.h"
-#include "gd32f4xx_misc.h"
+#include "gd32f4xx.h"
 #include "main.h"
 #include "led.h"
 #include "game_usart.h"
@@ -45,6 +45,9 @@ OF SUCH DAMAGE.
 #include "timer_led.h"
 #include "pwm_led.h"
 #include "led_light_flow.h"
+#include "tftlcd_init.h"
+#include "tftlcd.h"
+#include "pic.h"
 
 /*!
     \brief    main function
@@ -56,8 +59,28 @@ int main(void) {
     systick_config();
     nvic_priority_group_set(NVIC_PRIGROUP_PRE2_SUB2);
     Key_Nvic_Key_Init();
+    Led_Init();
     Usart_Send_Init(115200U);
+    LCD_Init();//LCD初始化
+    LCD_Fill(0, 0, LCD_W, LCD_H, WHITE);
+    u8 i, j;
+    float t = 0;
     while (1) {
+//        LCD_ShowString(0, 0, "Zzm Big Pig !!!!", BLACK, WHITE, 16, 0);
 
+        LCD_ShowString(2, 40, "Good Good Study. Day Day Up.", BLACK, WHITE, 16, 0);
+//        LCD_ShowString(0, 40, "", BLACK, WHITE, 16, 0);
+//        LCD_ShowIntNum(48, 40, LCD_W, 3, RED, WHITE, 16);
+//        LCD_ShowString(80, 40, "LCD_H:", RED, WHITE, 16, 0);
+//        LCD_ShowIntNum(128, 40, LCD_H, 3, RED, WHITE, 16);
+//        LCD_ShowString(80, 40, "LCD_H:", RED, WHITE, 16, 0);
+//        LCD_ShowString(0, 70, "Increaseing Nun:", RED, WHITE, 16, 0);
+//        LCD_ShowFloatNum1(128, 70, t, 4, RED, WHITE, 16);
+//        t += 0.11;
+//        for (j = 0; j < 3; j++) {
+//            for (i = 0; i < 6; i++) {
+//                LCD_ShowPicture(40 * i, 120 + j * 40, 40, 40, gImage_1);
+//            }
+//        }
     }
 }

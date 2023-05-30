@@ -399,6 +399,9 @@ typedef enum {ERROR = 0, SUCCESS = !ERROR} ErrStatus;
 #define PFin(n)   *(BIT_ADDR(GPIOF_ISTAT_OFFSET,n))   		  // PF口输入
 #define PGin(n)   *(BIT_ADDR(GPIOG_ISTAT_OFFSET,n))   		  // PG口输入
 #define PHin(n)   *(BIT_ADDR(GPIOH_ISTAT_OFFSET,n))   		  // PH口输入
+#define u8 uint8_t
+#define u16 uint16_t
+#define u32 uint32_t
 /** custom define end */
 #ifdef __cplusplus
 }
