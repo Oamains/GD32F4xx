@@ -1,18 +1,9 @@
 # lvgl
+include_directories(${PROJECT_SOURCE_DIR}/Gui/examples)
 include_directories(${PROJECT_SOURCE_DIR}/Lib/LVGL)
-include_directories(${PROJECT_SOURCE_DIR}/Lib/LVGL/lv_core/Include)
-include_directories(${PROJECT_SOURCE_DIR}/Lib/LVGL/lv_draw/Include)
-include_directories(${PROJECT_SOURCE_DIR}/Lib/LVGL/lv_extra/Include)
-include_directories(${PROJECT_SOURCE_DIR}/Lib/LVGL/lv_font/Include)
-include_directories(${PROJECT_SOURCE_DIR}/Lib/LVGL/lv_hal/Include)
-include_directories(${PROJECT_SOURCE_DIR}/Lib/LVGL/lv_misc/Include)
-include_directories(${PROJECT_SOURCE_DIR}/Lib/LVGL/lv_widgets/Include)
 
-file(GLOB_RECURSE Libraries ${PROJECT_SOURCE_DIR}/Lib/LVGL/*.*
-                                ${PROJECT_SOURCE_DIR}/Lib/LVGL/lv_core/Source/*.*
-                                ${PROJECT_SOURCE_DIR}/Lib/LVGL/lv_draw/Source/*.*
-                                ${PROJECT_SOURCE_DIR}/Lib/LVGL/lv_extra/Source/*.*
-                                ${PROJECT_SOURCE_DIR}/Lib/LVGL/lv_font/Source/*.*
-                                ${PROJECT_SOURCE_DIR}/Lib/LVGL/lv_hal/Source/*.*
-                                ${PROJECT_SOURCE_DIR}/Lib/LVGL/lv_misc/Source/*.*
-                                ${PROJECT_SOURCE_DIR}/Lib/LVGL/lv_widgets/Source/*.*)
+
+
+
+file(GLOB_RECURSE Libraries ${PROJECT_SOURCE_DIR}/Gui/examples/*.*
+                            ${PROJECT_SOURCE_DIR}/Lib/LVGL/*.*)

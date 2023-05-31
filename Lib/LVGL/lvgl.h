@@ -22,53 +22,53 @@ extern "C" {
  *      INCLUDES
  *********************/
 
-#include "lv_log.h"
-#include "lv_timer.h"
-#include "lv_math.h"
-#include "lv_async.h"
+#include "src/misc/lv_log.h"
+#include "src/misc/lv_timer.h"
+#include "src/misc/lv_math.h"
+#include "src/misc/lv_async.h"
 
-#include "lv_hal.h"
+#include "src/hal/lv_hal.h"
 
-#include "lv_obj.h"
-#include "lv_group.h"
-#include "lv_indev.h"
+#include "src/core/lv_obj.h"
+#include "src/core/lv_group.h"
+#include "src/core/lv_indev.h"
 
-#include "lv_refr.h"
-#include "lv_disp.h"
-#include "lv_theme.h"
+#include "src/core/lv_refr.h"
+#include "src/core/lv_disp.h"
+#include "src/core/lv_theme.h"
 
-#include "lv_font.h"
-#include "lv_font_loader.h"
-#include "lv_font_fmt_txt.h"
-#include "lv_printf.h"
+#include "src/font/lv_font.h"
+#include "src/font/lv_font_loader.h"
+#include "src/font/lv_font_fmt_txt.h"
+#include "src/misc/lv_printf.h"
 
-#include "lv_arc.h"
-#include "lv_btn.h"
-#include "lv_img.h"
-#include "lv_label.h"
-#include "lv_line.h"
-#include "lv_table.h"
-#include "lv_checkbox.h"
-#include "lv_bar.h"
-#include "lv_slider.h"
-#include "lv_btnmatrix.h"
-#include "lv_dropdown.h"
-#include "lv_roller.h"
-#include "lv_textarea.h"
-#include "lv_canvas.h"
-#include "lv_switch.h"
+#include "src/widgets/lv_arc.h"
+#include "src/widgets/lv_btn.h"
+#include "src/widgets/lv_img.h"
+#include "src/widgets/lv_label.h"
+#include "src/widgets/lv_line.h"
+#include "src/widgets/lv_table.h"
+#include "src/widgets/lv_checkbox.h"
+#include "src/widgets/lv_bar.h"
+#include "src/widgets/lv_slider.h"
+#include "src/widgets/lv_btnmatrix.h"
+#include "src/widgets/lv_dropdown.h"
+#include "src/widgets/lv_roller.h"
+#include "src/widgets/lv_textarea.h"
+#include "src/widgets/lv_canvas.h"
+#include "src/widgets/lv_switch.h"
 
-#include "lv_draw.h"
+#include "src/draw/lv_draw.h"
 
-#include "lv_api_map.h"
+#include "src/lv_api_map.h"
 
 /*-----------------
  * EXTRAS
  *----------------*/
-#include "lv_extra.h"
-#include "lv_widgets.h"
-#include "lv_layouts.h"
-#include "lv_themes.h"
+#include "src/extra/lv_extra.h"
+#include "src/extra/widgets/lv_widgets.h"
+#include "src/extra/layouts/lv_layouts.h"
+#include "src/extra/themes/lv_themes.h"
 
 /*********************
  *      DEFINES
