@@ -37,20 +37,15 @@ void LCD_GPIO_Init(void) {
 
 
 }
+void delay(int t)
+{
+    while(t--);
+}
 
 void LCD_Writ_Bus(u8 dat) {
-    u8 i;
     LCD_CS_Clr();
-    for (i = 0; i < 8; i++) {
-        LCD_SCLK_Clr();
-        if (dat & 0x80) {
-            LCD_MOSI_Set();
-        } else {
-            LCD_MOSI_Clr();
-        }
-        LCD_SCLK_Set();
-        dat <<= 1;
-    }
+    Lcd_SpiWrite(dat);
+    delay(4);
     LCD_CS_Set();
 }
 
@@ -108,8 +103,8 @@ void LCD_Address_Set(u16 x1, u16 y1, u16 x2, u16 y2) {
 
 
 void LCD_Init(void) {
+    Spi2_Init();
     LCD_GPIO_Init();//初始化GPIO
-
     LCD_RES_Clr();// 复位
     delay_ms(100);
     LCD_RES_Set();

@@ -11,10 +11,6 @@
  * Definitions
  ******************************************************************************/
 
-#define LCD_WIDTH 240
-#define LCD_HEIGHT 240
-#define LCD_FB_BYTE_PER_PIXEL 1
-
 /*******************************************************************************
  * API
  ******************************************************************************/
@@ -24,7 +20,7 @@ extern "C" {
 #endif
 
 void lcd_disp_config(void);
-
+void TIM3_Int_Init(uint16_t arr,uint16_t psc);
 #if defined(__cplusplus)
 }
 #endif

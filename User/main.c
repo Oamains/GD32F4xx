@@ -43,7 +43,6 @@ OF SUCH DAMAGE.
 #include "game_usart.h"
 #include "led_key.h"
 #include "porting/lv_port_disp.h"
-#include "spi.h"
 #include "porting/lv_port_disp.h"
 #include "porting/lv_port_indev.h"
 #include "lv_example_get_started.h"
@@ -55,7 +54,6 @@ OF SUCH DAMAGE.
     \retval     none
 */
 int main(void) {
-    uint16_t count = 0;
     systick_config();
     nvic_priority_group_set(NVIC_PRIGROUP_PRE2_SUB2);
     Key_Nvic_Key_Init();
@@ -67,7 +65,6 @@ int main(void) {
     lv_example_get_started_1();
     while(1){
         lv_task_handler();
-        count++;
     }
 
 }

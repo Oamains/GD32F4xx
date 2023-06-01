@@ -6,10 +6,10 @@
 void Spi2_Init(void) {
     spi_parameter_struct spi_init_struct;
 
-    rcu_periph_clock_enable(RCU_GPIOF); // 使用F端口
+    rcu_periph_clock_enable(RCU_GPIOB); // 使用F端口
     rcu_periph_clock_enable(RCU_SPI2);  // 使能SPI2
     /* configure SPI2 GPIO */
-    gpio_af_set(GPIOB, GPIO_AF_5, GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5);
+    gpio_af_set(GPIOB, GPIO_AF_6, GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5);
     gpio_mode_set(GPIOB, GPIO_MODE_AF, GPIO_PUPD_NONE, GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5);
     gpio_output_options_set(GPIOB, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5);
 
@@ -35,21 +35,13 @@ void Spi2_Init(void) {
     SPI2_DMA_Init();
 }
 
-uint8_t SPI2_ReadWriteByte(uint8_t TxData) {
-    //uint8_t retry=0;
-    while (spi_i2s_flag_get(SPI2, SPI_FLAG_TBE) == RESET) //检查指定的SPI标志位设置与否:发送缓存空标志位
-    {
-        //retry++;
-        //if(retry>200)return 0;
-    }
-    spi_i2s_data_transmit(SPI2, (uint16_t) TxData); //通过外设SPIx发送一个数据
-    //retry=0;
-
-    while (spi_i2s_flag_get(SPI2, SPI_FLAG_RBNE) == RESET) //检查指定的SPI标志位设置与否:接受缓存非空标志位
-    {
-        //retry++;
-        //if(retry>200)return 0;
-    }
+uint8_t SPI2_ReadWriteByte(uint8_t dat) {
+    //uint8_t retry=0; 检查指定的SPI标志位设置与否:发送缓存空标志位
+    while (spi_i2s_flag_get(SPI2, SPI_FLAG_TBE) == RESET);
+    //通过外设SPIx发送一个数据
+    spi_i2s_data_transmit(SPI2, (uint16_t) dat);
+    //检查指定的SPI标志位设置与否:接受缓存非空标志位
+    while (spi_i2s_flag_get(SPI2, SPI_FLAG_RBNE) == RESET) ;
     return spi_i2s_data_receive(SPI2); //返回通过SPIx最近接收的数据
 }
 

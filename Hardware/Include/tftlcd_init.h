@@ -7,6 +7,7 @@
 
 #include "gd32f4xx.h"
 #include "systick.h"
+#include "spi.h"
 
 #define USE_HORIZONTAL 0  // 设置横屏或者竖屏 0或1为竖屏 2或3为横屏
 
@@ -31,13 +32,13 @@
 #define LCD_BLK_PORT   GPIOD
 #define LCD_BLK_PIN    GPIO_PIN_5
 
-#define LCD_SCL_RCU    RCU_GPIOF
-#define LCD_SCL_PORT   GPIOF
-#define LCD_SCL_PIN    GPIO_PIN_7
+#define LCD_SCL_RCU    RCU_GPIOB
+#define LCD_SCL_PORT   GPIOB
+#define LCD_SCL_PIN    GPIO_PIN_3
 
-#define LCD_SDA_RCU    RCU_GPIOF
-#define LCD_SDA_PORT   GPIOF
-#define LCD_SDA_PIN    GPIO_PIN_9
+#define LCD_SDA_RCU    RCU_GPIOB
+#define LCD_SDA_PORT   GPIOB
+#define LCD_SDA_PIN    GPIO_PIN_5
 
 
 //-----------------LCD端口定义----------------
@@ -60,6 +61,7 @@
 #define LCD_BLK_Clr()  gpio_bit_reset(LCD_BLK_PORT,LCD_BLK_PIN)//BLK
 #define LCD_BLK_Set()  gpio_bit_set(LCD_BLK_PORT,LCD_BLK_PIN)
 
+#define Lcd_SpiWrite  SPI2_ReadWriteByte
 
 void LCD_GPIO_Init(void);// 初始化GPIO
 void LCD_Writ_Bus(u8 dat);//模拟SPI时序

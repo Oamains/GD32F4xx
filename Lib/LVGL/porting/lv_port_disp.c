@@ -13,6 +13,7 @@
 #include "lvgl.h"
 #include "tftlcd_init.h"
 #include "tftlcd.h"
+#include "lvgl_tftlcd.h"
 
 /*********************
  *      DEFINES
@@ -132,7 +133,9 @@ void lv_port_disp_init(void) {
 /*Initialize your display and the required peripherals.*/
 static void disp_init(void) {
     /*You code here*/
-    Spi2_Init();
+    LCD_Init();
+    LCD_Fill(0, 0, LCD_W, LCD_H, WHITE);
+    TIM3_Int_Init(10000, 10000);//1ms
 }
 
 /*Flush the content of the internal buffer the specific area on the display
@@ -150,7 +153,7 @@ static void disp_flush(lv_disp_drv_t *disp_drv, const lv_area_t *area, lv_color_
 //            color_p++;
 //        }
 //    }
-    LCD_Fill_GAM(area->x1,area->y1,area->x2,area->y2,color_p);
+    LCD_Fill_GAM(area->x1, area->y1, area->x2, area->y2, color_p);
 
     /*IMPORTANT!!!
      *Inform the graphics library that you are ready with the flushing*/
