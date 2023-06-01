@@ -39,7 +39,6 @@ OF SUCH DAMAGE.
 #define __MAIN_H
 
 /* led spark function */
-void timer_tick_config(uint16_t pre, uint16_t psc);
 #endif /* __MAIN_H */
 
 

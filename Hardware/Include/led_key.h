@@ -9,6 +9,7 @@
 #include "gd32f4xx_exti.h"
 #include "led.h"
 #include "game_usart.h"
+extern uint8_t keyflag;
 /**
  * 按键初始化
  */

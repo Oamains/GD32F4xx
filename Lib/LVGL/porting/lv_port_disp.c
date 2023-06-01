@@ -50,7 +50,7 @@ void lv_port_disp_init(void) {
     /*-------------------------
      * Initialize your display
      * -----------------------*/
-    //disp_init();
+    disp_init();
 
     /*-----------------------------
      * Create a buffer for drawing
@@ -132,6 +132,7 @@ void lv_port_disp_init(void) {
 /*Initialize your display and the required peripherals.*/
 static void disp_init(void) {
     /*You code here*/
+    Spi2_Init();
 }
 
 /*Flush the content of the internal buffer the specific area on the display

@@ -24,13 +24,13 @@ void LCD_Fill_GAM(uint16_t xsta, uint16_t ysta, uint16_t xend, uint16_t yend, co
             times=0;
             numlast=num;
         }
-        SPI1_DMA_Transmit((uint8_t*)color,8,1,numlast);
+        SPI2_DMA_Transmit((uint8_t*)color,8,1,numlast);
         //color +=65534;
         //delay_us(2);
     }
     LCD_CS_Set();
-    spi_i2s_data_frame_format_config(SPI1, SPI_FRAMESIZE_8BIT); //设置8位传输模式
-    spi_enable(SPI1);
+    spi_i2s_data_frame_format_config(SPI2, SPI_FRAMESIZE_8BIT); //设置8位传输模式
+    spi_enable(SPI2);
 }
 
 void LCD_Fill(u16 xsta, u16 ysta, u16 xend, u16 yend, u16 color) {

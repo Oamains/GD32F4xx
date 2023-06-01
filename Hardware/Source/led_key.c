@@ -3,6 +3,7 @@
 //
 #include "led_key.h"
 
+uint8_t keyflag = 0;
 
 void Key_Init() {
 
@@ -42,14 +43,19 @@ void Press_Key_Scan() {
 }
 
 
-//void EXTI0_IRQHandler(void) {
-//    if (exti_interrupt_flag_get(EXTI_0) == SET) {
-//        if (gpio_input_bit_get(GPIOA, GPIO_PIN_0) == SET) {
-//            gpio_bit_toggle(LED3_PORT, LED3_PIN);
-//            printf("key press \n");
-//        } else {
-//            printf("key release \n");
-//        }
-//        exti_interrupt_flag_clear(EXTI_0);
-//    }
-//}
+void EXTI0_IRQHandler(void) {
+    if (exti_interrupt_flag_get(EXTI_0) == SET) {
+        if (gpio_input_bit_get(GPIOA, GPIO_PIN_0) == SET) {
+            gpio_bit_toggle(LED3_PORT, LED3_PIN);
+            printf("key press \n");
+            if (keyflag) {
+                keyflag = 0;
+            } else {
+                keyflag = 1;
+            }
+        } else {
+            printf("key release \n");
+        }
+        exti_interrupt_flag_clear(EXTI_0);
+    }
+}

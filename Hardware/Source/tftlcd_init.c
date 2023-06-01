@@ -25,15 +25,15 @@ void LCD_GPIO_Init(void) {
     gpio_output_options_set(LCD_BLK_PORT, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, LCD_BLK_PIN);
     gpio_bit_set(LCD_BLK_PORT,LCD_BLK_PIN);
 
-    rcu_periph_clock_enable(LCD_SCL_RCU);
-    gpio_mode_set(LCD_SCL_PORT, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, LCD_SCL_PIN);
-    gpio_output_options_set(LCD_SCL_PORT, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, LCD_SCL_PIN);
-    gpio_bit_set(LCD_SCL_PORT,LCD_SCL_PIN);
-
-    rcu_periph_clock_enable(LCD_SDA_RCU);
-    gpio_mode_set(LCD_SDA_PORT, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, LCD_SDA_PIN);
-    gpio_output_options_set(LCD_SDA_PORT, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, LCD_SDA_PIN);
-    gpio_bit_set(LCD_SDA_PORT,LCD_SDA_PIN);
+//    rcu_periph_clock_enable(LCD_SCL_RCU);
+//    gpio_mode_set(LCD_SCL_PORT, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, LCD_SCL_PIN);
+//    gpio_output_options_set(LCD_SCL_PORT, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, LCD_SCL_PIN);
+//    gpio_bit_set(LCD_SCL_PORT,LCD_SCL_PIN);
+//
+//    rcu_periph_clock_enable(LCD_SDA_RCU);
+//    gpio_mode_set(LCD_SDA_PORT, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, LCD_SDA_PIN);
+//    gpio_output_options_set(LCD_SDA_PORT, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, LCD_SDA_PIN);
+//    gpio_bit_set(LCD_SDA_PORT,LCD_SDA_PIN);
 
 
 }

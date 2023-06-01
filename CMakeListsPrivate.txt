@@ -1,9 +1,11 @@
 # lvgl
+include_directories(${PROJECT_SOURCE_DIR}/Gui/demo)
 include_directories(${PROJECT_SOURCE_DIR}/Gui/examples)
 include_directories(${PROJECT_SOURCE_DIR}/Lib/LVGL)
 
 
 
 
-file(GLOB_RECURSE Libraries ${PROJECT_SOURCE_DIR}/Gui/examples/*.*
+file(GLOB_RECURSE Libraries ${PROJECT_SOURCE_DIR}/Gui/demo/*.*
+                            ${PROJECT_SOURCE_DIR}/Gui/examples/*.*
                             ${PROJECT_SOURCE_DIR}/Lib/LVGL/*.*)
