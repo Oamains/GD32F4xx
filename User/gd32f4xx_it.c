@@ -39,8 +39,6 @@ OF SUCH DAMAGE.
 #include "main.h"
 #include "systick.h"
 #include "porting/lv_port_disp.h"
-volatile uint8_t g_gpu_state = 0;
-lv_disp_drv_t * g_disp_drv;
 /*!
     \brief    this function handles NMI exception
     \param[in]  none

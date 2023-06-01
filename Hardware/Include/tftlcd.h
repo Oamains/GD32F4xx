@@ -4,10 +4,13 @@
 
 #ifndef _TFTLCD_H
 #define _TFTLCD_H
-
+#include "tftlcd_init.h"
 #include "gd32f4xx.h"
 #include "systick.h"
+#include "spi.h"
 
+
+void LCD_Fill_GAM(uint16_t xsta, uint16_t ysta, uint16_t xend, uint16_t yend, const void* color);
 /**
  * 指定区域填充颜色
  * @param xsta

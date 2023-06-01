@@ -18,7 +18,7 @@ extern "C" {
  *      INCLUDES
  *********************/
 #include "lvgl.h"
-void lv_port_indev_init(void);
+
 /*********************
  *      DEFINES
  *********************/

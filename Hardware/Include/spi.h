@@ -7,6 +7,7 @@
 
 #include "gd32f4xx.h"
 #include "systick.h"
+#include "gd32f4xx_dma.h"
 
 /**
  * lcd spi 初始化
@@ -25,4 +26,8 @@ void Spi_Write(uint8_t dat);
  */
 uint8_t Spi_Read(void);
 
+
+void SPI_DMA_Init(void);//SPI1-TX->DMA0-CH4
+
+void SPI1_DMA_Transmit(const void* srcaddr, uint8_t datawidth, uint8_t srcaddrinc, uint32_t datanum);
 #endif //_SPI_H
