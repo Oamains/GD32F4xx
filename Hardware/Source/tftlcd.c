@@ -6,27 +6,21 @@
 
 
 void LCD_Fill_GAM(uint16_t xsta, uint16_t ysta, uint16_t xend, uint16_t yend, const void *color) {
-    uint32_t num,times,numlast;
-    num = (xend - xsta+1) * (yend - ysta+1)*2;
-    times=1;
+    uint32_t num, times, numlast;
+    num = (xend - xsta + 1) * (yend - ysta + 1) * 2;
+    times = 1;
     LCD_Address_Set(xsta, ysta, xend, yend); //设置显示范围
     LCD_CS_Clr();
     //delay_us(2);
-    while(times)
-    {
-        if(num>65534)
-        {
-            num-=65534;
-            numlast=65534;
+    while (times) {
+        if (num > 65534) {
+            num -= 65534;
+            numlast = 65534;
+        } else {
+            times = 0;
+            numlast = num;
         }
-        else
-        {
-            times=0;
-            numlast=num;
-        }
-        SPI2_DMA_Transmit((uint8_t*)color,8,1,numlast);
-        //color +=65534;
-        //delay_us(2);
+        SPI2_DMA_Transmit((uint8_t *) color, 8, 1, numlast);
     }
     LCD_CS_Set();
     spi_i2s_data_frame_format_config(SPI2, SPI_FRAMESIZE_8BIT); //设置8位传输模式

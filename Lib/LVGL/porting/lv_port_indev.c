@@ -36,7 +36,7 @@
 //static void mouse_get_xy(lv_coord_t * x, lv_coord_t * y);
 
 //static void keypad_init(void);
-static void keypad_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data);
+static void keypad_read(lv_indev_drv_t *indev_drv, lv_indev_data_t *data);
 //static uint32_t keypad_get_key(void);
 
 //static void encoder_init(void);
@@ -53,7 +53,7 @@ static void keypad_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data);
  **********************/
 //lv_indev_t * indev_touchpad;
 //lv_indev_t * indev_mouse;
-lv_indev_t * indev_keypad;
+lv_indev_t *indev_keypad;
 //lv_indev_t * indev_encoder;
 //lv_indev_t * indev_button;
 
@@ -68,8 +68,7 @@ lv_indev_t * indev_keypad;
  *   GLOBAL FUNCTIONS
  **********************/
 
-void lv_port_indev_init(void)
-{
+void lv_port_indev_init(void) {
     /**
      * Here you will find example implementation of input devices supported by LittelvGL:
      *  - Touchpad
@@ -274,8 +273,7 @@ void lv_port_indev_init(void)
 //}
 
 /*Will be called by the library to read the mouse*/
-static void keypad_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data)
-{
+static void keypad_read(lv_indev_drv_t *indev_drv, lv_indev_data_t *data) {
     static uint32_t last_key = 0;
 
     /*Get the current x and y coordinates*/
@@ -283,11 +281,11 @@ static void keypad_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data)
 
     /*Get whether the a key is pressed and save the pressed key*/
     uint32_t act_key = keyflag;
-    if(act_key != 0) {
+    if (act_key != 0) {
         data->state = LV_INDEV_STATE_PR;
 
         /*Translate the keys to LVGL control characters according to your key definitions*/
-        switch(act_key) {
+        switch (act_key) {
             case 1:
                 act_key = LV_KEY_PREV;
                 break;
@@ -303,7 +301,7 @@ static void keypad_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data)
     } else {
         data->state = LV_INDEV_STATE_REL;
     }
-    keyflag=0;//???????
+    keyflag = 0;//???????
     data->key = last_key;
 }
 

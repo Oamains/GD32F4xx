@@ -18,9 +18,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-void lcd_disp_config(void);
-void TIM3_Int_Init(uint16_t arr,uint16_t psc);
+void TIMER3_Init(uint16_t arr,uint16_t psc);
 #if defined(__cplusplus)
 }
 #endif

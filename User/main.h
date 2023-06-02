@@ -37,7 +37,7 @@ OF SUCH DAMAGE.
 
 #ifndef __MAIN_H
 #define __MAIN_H
-
+extern uint8_t lv_tick_count;
 /* led spark function */
 #endif /* __MAIN_H */
 

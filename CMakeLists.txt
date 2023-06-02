@@ -5,7 +5,7 @@ set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_VERSION 1)
 
 set(TOOLCHAIN_PREFIX arm-none-eabi-) # 设置ARM交叉编译器前缀
-set(ARM_TOOLCHAIN_DIR D:\\software\\GUN-Tools-ARM-Embedded\\bin) # 设置ARM交叉编译器路径
+set(ARM_TOOLCHAIN_DIR /Applications/ArmGNUToolchain/12.2.mpacbti-rel1/arm-none-eabi/bin) # 设置ARM交叉编译器路径
 
 # 设置交叉编译器
 set(CMAKE_C_COMPILER ${TOOLCHAIN_PREFIX}gcc)
