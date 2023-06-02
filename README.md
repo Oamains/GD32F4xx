@@ -101,7 +101,7 @@ Debugger: arm-none-eabi-gdb
  */
 #define LV_VER_RES_MAX
 /**
- * 此项为DPI配置 找了一个计算简单的方式 DPI = ((√240*240+272*272) / 1.54) ≈ 220
+ * 此项为DPI配置 找了一个计算简单的方式 DPI = ((√240*240 + 240*240) / 1.54) ≈ 220
  */
 #define LV_DPI_DEF
 /***
