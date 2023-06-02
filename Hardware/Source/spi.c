@@ -45,7 +45,10 @@ uint8_t SPI2_ReadWriteByte(uint8_t dat) {
     return spi_i2s_data_receive(SPI2); //返回通过SPIx最近接收的数据
 }
 
-// SPI2-TX->DMA0-CH4
+/**
+ * SPI DMA 暂时未实现 逻辑没搞懂
+ * SPI2-TX->DMA0-CH4
+ */
 void SPI2_DMA_Init(void) {
     dma_multi_data_parameter_struct dma_init_parameter;
     /* peripheral clock enable */
