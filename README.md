@@ -91,26 +91,21 @@ Debugger: arm-none-eabi-gdb
 /**
  * 屏幕水平分辨率
  */
-#define
-LV_HOR_RES_MAX
+#define LV_HOR_RES_MAX
 
 /**
  * 屏幕垂直分辨率
  */
-#define
-LV_VER_RES_MAX
+#define LV_VER_RES_MAX
 /**
  * 此项为DPI配置 找了一个计算简单的方式 DPI = ((√240*240+272*272) / 1.54) ≈ 220
  */
-#define
-LV_DPI_DEF
+#define LV_DPI_DEF
 /***
 * 此项设置刷新率，lvgl内部定时器刷新，默认是30ms刷新，设置小一点应该会清晰一点
 */
-#define
-LV_DISP_DEF_REFR_PERIOD
-#define
-LV_INDEV_DEF_READ_PERIOD
+#define LV_DISP_DEF_REFR_PERIOD
+#define LV_INDEV_DEF_READ_PERIOD
 ```
 
 > 实际渲染内容位于```porting/lv_port_disp.c```文件中的```disp_flush```函数
