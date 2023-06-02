@@ -23,8 +23,8 @@
  *      TYPEDEFS
  **********************/
 
-#define MY_DISP_HOR_RES (LCD_W)
-#define MY_DISP_VER_RES (LCD_H)
+#define MY_DISP_HOR_RES LV_HOR_RES_MAX
+#define MY_DISP_VER_RES LV_VER_RES_MAX
 
 /**********************
  *  STATIC PROTOTYPES
