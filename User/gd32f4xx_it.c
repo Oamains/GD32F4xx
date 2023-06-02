@@ -38,7 +38,7 @@ OF SUCH DAMAGE.
 #include "gd32f4xx_it.h"
 #include "main.h"
 #include "systick.h"
-
+#include "porting/lv_port_disp.h"
 /*!
     \brief    this function handles NMI exception
     \param[in]  none

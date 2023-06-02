@@ -64,9 +64,9 @@ void systick_config(void)
     \param[out] none
     \retval     none
 */
-void delay_1ms(uint32_t count)
+void delay_1ms(uint32_t millis)
 {
-    delay = count;
+    delay = millis;
 
     while(0U != delay) {
     }

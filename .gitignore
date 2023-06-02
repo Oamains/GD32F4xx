@@ -1,4 +1,9 @@
 .idea
 *.iml
+<<<<<<< HEAD
 /cmake-build-*
 CMakeLists.txt
+=======
+/cmake-build-*/
+/target
+>>>>>>> feature/example

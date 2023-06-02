@@ -35,11 +35,17 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 OF SUCH DAMAGE.
 */
 
-#include "gd32f4xx.h"
+#include <string.h>
 #include "systick.h"
-#include <stdio.h>
+#include "gd32f4xx.h"
 #include "main.h"
 #include "led.h"
+#include "game_usart.h"
+#include "led_key.h"
+#include "porting/lv_port_disp.h"
+#include "porting/lv_port_disp.h"
+#include "porting/lv_port_indev.h"
+#include "lv_example_get_started.h"
 
 /*!
     \brief    main function
@@ -49,11 +55,16 @@ OF SUCH DAMAGE.
 */
 int main(void) {
     systick_config();
-    // LED Init
+    nvic_priority_group_set(NVIC_PRIGROUP_PRE2_SUB2);
+    Key_Nvic_Key_Init();
     Led_Init();
-    while (1) {
-        // lighting
-        gpio_bit_toggle(GPIOA, GPIO_PIN_5);
-        delay_1ms(1000);
+    Usart_Send_Init(115200U);
+    lv_init();
+    lv_port_disp_init();
+    lv_port_indev_init();
+    lv_example_get_started_1();
+    while(1){
+        lv_task_handler();
     }
+
 }

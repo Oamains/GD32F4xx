@@ -5,7 +5,7 @@ set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_VERSION 1)
 
 set(TOOLCHAIN_PREFIX arm-none-eabi-) # 设置ARM交叉编译器前缀
-set(ARM_TOOLCHAIN_DIR /Applications/ArmGNUToolchain/12.2.mpacbti-rel1/arm-none-eabi/bin) # 设置ARM交叉编译器路径
+set(ARM_TOOLCHAIN_DIR D:\\software\\GUN-Tools-ARM-Embedded\\bin) # 设置ARM交叉编译器路径
 
 # 设置交叉编译器
 set(CMAKE_C_COMPILER ${TOOLCHAIN_PREFIX}gcc)
@@ -33,20 +33,19 @@ include_directories(${PROJECT_SOURCE_DIR}/Firmware/CMSIS/GD/GD32F4xx/Include)
 include_directories(${PROJECT_SOURCE_DIR}/Firmware/GD32F4xx_standard_peripheral/Include)
 include_directories(${PROJECT_SOURCE_DIR}/Hardware/Include)
 include_directories(${PROJECT_SOURCE_DIR}/User)
-
+include(CMakeListsPrivate.txt)
 # 源文件
 file(GLOB_RECURSE DRIVER
         ${PROJECT_SOURCE_DIR}/Firmware/GD32F4xx_standard_peripheral/Source/*.c
         ${PROJECT_SOURCE_DIR}/Firmware/CMSIS/GD/GD32F4xx/Source/*.c
         ${PROJECT_SOURCE_DIR}/Hardware/Source/*.c
         )
-
-file(GLOB_RECURSE USER ${PROJECT_SOURCE_DIR}/User/*.c)
+file(GLOB_RECURSE USER ${PROJECT_SOURCE_DIR}/User/*.*)
 # 设置条件编译为GD32F450
 add_compile_definitions(GD32F470)
 # 创建库
-add_library(GD32F4xx_driver STATIC ${DRIVER})
-set(STARTUP ${PROJECT_SOURCE_DIR}/Startup/startup_gd32f450.S)
+add_library(GD32F4xx_driver STATIC ${DRIVER} ${Libraries})
+set(STARTUP ${PROJECT_SOURCE_DIR}/Startup/startup_gd32f450.s)
 
 target_include_directories(GD32F4xx_driver PUBLIC ${PROJECT_SOURCE_DIR}/Firmware/CMSIS)
 target_include_directories(GD32F4xx_driver PUBLIC ${PROJECT_SOURCE_DIR}/Firmware/GD32F4xx_standard_peripheral/Include)

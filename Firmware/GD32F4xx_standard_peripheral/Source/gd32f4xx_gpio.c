@@ -112,7 +112,7 @@ void gpio_deinit(uint32_t gpio_periph)
     \param[in]  pull_up_down: GPIO pin with pull-up or pull-down resistor
       \arg        GPIO_PUPD_NONE: floating mode, no pull-up and pull-down resistors
       \arg        GPIO_PUPD_PULLUP: with pull-up resistor
-      \arg        GPIO_PUPD_PULLDOWN:with pull-down resistor
+      \arg          :with pull-down resistor
     \param[in]  pin: GPIO pin
                 one or more parameters can be selected which are shown as below:
       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
