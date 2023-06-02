@@ -83,6 +83,9 @@ C++ Compiler: arm-none-eabi-g++
 Debugger: arm-none-eabi-gdb
 ```
 
+# 烧录
+> 烧录时 需将工程目录下的```gd32f450.cfg```拷贝至 ```OpenOCD\share\openocd\scripts\target\```目录下
+
 # LVGL配置修改
 
 > 1. lvgl在目录```Lib/lv_conf.h```的文件中以下几项可修改（其他项暂时没研究不太懂）：
