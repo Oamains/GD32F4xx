@@ -8,9 +8,10 @@
 #include "gd32f4xx.h"
 #include "systick.h"
 #include "spi.h"
+#include "src/misc/lv_color.h"
 
 
-void LCD_Fill_GAM(uint16_t xsta, uint16_t ysta, uint16_t xend, uint16_t yend, const void* color);
+void LCD_Fill_GAM(uint16_t xsta, uint16_t ysta, uint16_t xend, uint16_t yend, lv_color_t *color);
 /**
  * 指定区域填充颜色
  * @param xsta

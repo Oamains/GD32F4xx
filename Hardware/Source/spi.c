@@ -32,7 +32,7 @@ void Spi2_Init(void) {
     /* enable SPI */
     spi_enable(SPI2);
 
-    SPI2_DMA_Init();
+//    SPI2_DMA_Init();
 }
 
 uint8_t SPI2_ReadWriteByte(uint8_t dat) {
@@ -49,9 +49,9 @@ uint8_t SPI2_ReadWriteByte(uint8_t dat) {
 void SPI2_DMA_Init(void) {
     dma_multi_data_parameter_struct dma_init_parameter;
     /* peripheral clock enable */
-    rcu_periph_clock_enable(RCU_DMA1);
+    rcu_periph_clock_enable(RCU_DMA0);
     /* DMA peripheral configure */
-    dma_deinit(SPI2, DMA_CH5);
+    dma_deinit(SPI2, DMA_CH0);
     dma_init_parameter.periph_addr = (uint32_t) (&SPI_DATA(SPI2));
     dma_init_parameter.periph_width = DMA_MEMORY_WIDTH_8BIT;
     dma_init_parameter.periph_inc = DMA_PERIPH_INCREASE_DISABLE;
@@ -62,42 +62,42 @@ void SPI2_DMA_Init(void) {
     dma_init_parameter.periph_burst_width = DMA_PERIPH_BURST_4_BEAT;
     dma_init_parameter.critical_value = DMA_FIFO_2_WORD;
     dma_init_parameter.circular_mode = DMA_CIRCULAR_MODE_DISABLE;
-    dma_init_parameter.direction = DMA_MEMORY_TO_MEMORY;
+    dma_init_parameter.direction = DMA_MEMORY_TO_PERIPH;
     dma_init_parameter.number = 0;
-    dma_init_parameter.priority = DMA_PRIORITY_ULTRA_HIGH;
-    dma_multi_data_mode_init(DMA0, DMA_CH5, &dma_init_parameter);
-    dma_channel_enable(DMA0, DMA_CH5);
+    dma_init_parameter.priority = DMA_PRIORITY_LOW;
+    dma_multi_data_mode_init(DMA0, DMA_CH0, &dma_init_parameter);
+    dma_channel_enable(DMA0, DMA_CH0);
 }
 
 void SPI2_DMA_Transmit(const void *srcaddr, uint8_t datawidth, uint8_t srcaddrinc, uint32_t datanum) {
     spi_disable(SPI2);
     spi_dma_disable(SPI2, SPI_DMA_TRANSMIT);
-    dma_channel_disable(DMA0, DMA_CH5);
+    dma_channel_disable(DMA0, DMA_CH0);
     if (datawidth == 16) // 16位数据传输
     {
         spi_i2s_data_frame_format_config(SPI2, SPI_FRAMESIZE_16BIT);
-        dma_memory_width_config(DMA0, DMA_CH5, DMA_MEMORY_WIDTH_16BIT); //内存16位
-        dma_periph_width_config(DMA0, DMA_CH5, DMA_MEMORY_WIDTH_16BIT); //外设16位
+        dma_memory_width_config(DMA0, DMA_CH0, DMA_MEMORY_WIDTH_16BIT); //内存16位
+        dma_periph_width_config(DMA0, DMA_CH0, DMA_MEMORY_WIDTH_16BIT); //外设16位
     } else if (datawidth == 8) //八位数据传输
     {
         spi_i2s_data_frame_format_config(SPI2, SPI_FRAMESIZE_8BIT);
-        dma_memory_width_config(DMA0, DMA_CH5, DMA_MEMORY_WIDTH_8BIT); //内存8位
-        dma_periph_width_config(DMA0, DMA_CH5, DMA_MEMORY_WIDTH_8BIT); //外设8位
+        dma_memory_width_config(DMA0, DMA_CH0, DMA_MEMORY_WIDTH_8BIT); //内存8位
+        dma_periph_width_config(DMA0, DMA_CH0, DMA_MEMORY_WIDTH_8BIT); //外设8位
     }
     if (srcaddrinc)//如果数据地址递增
         //开启数据地址递增
-        dma_memory_address_generation_config(DMA0, DMA_CH5, DMA_MEMORY_INCREASE_ENABLE);
+        dma_memory_address_generation_config(DMA0, DMA_CH0, DMA_MEMORY_INCREASE_ENABLE);
     else
-        dma_memory_address_generation_config(DMA0, DMA_CH5, DMA_MEMORY_INCREASE_DISABLE);
-    dma_memory_address_config(DMA0, DMA_CH5, DMA_MEMORY_0, (uint32_t) srcaddr);//配置源地址
-    dma_transfer_number_config(DMA0, DMA_CH5, datanum);//配置数据量
-    dma_channel_enable(DMA0, DMA_CH5);
+        dma_memory_address_generation_config(DMA0, DMA_CH0, DMA_MEMORY_INCREASE_DISABLE);
+    dma_memory_address_config(DMA0, DMA_CH0, DMA_MEMORY_0, (uint32_t) srcaddr);//配置源地址
+    dma_transfer_number_config(DMA0, DMA_CH0, datanum);//配置数据量
+    dma_channel_enable(DMA0, DMA_CH0);
     spi_dma_enable(SPI2, SPI_DMA_TRANSMIT);
     spi_enable(SPI2); //开启传输
 
     while (1) {
-        if (dma_flag_get(DMA0, DMA_CH4, DMA_FLAG_FTF)) {
-            dma_flag_clear(DMA0, DMA_CH4, DMA_FLAG_FTF);
+        if (dma_flag_get(DMA0, DMA_CH0, DMA_FLAG_FTF)) {
+            dma_flag_clear(DMA0, DMA_CH0, DMA_FLAG_FTF);
             break;
         }
         //printf("transfer_number_last:%d\r\n", dma_transfer_number_get(DMA0, DMA_CH4)); //打印剩余数据量

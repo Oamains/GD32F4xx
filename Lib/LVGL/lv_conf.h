@@ -65,10 +65,10 @@
  *====================*/
 
 /*Default display refresh period. LVG will redraw changed ares with this period time*/
-#define LV_DISP_DEF_REFR_PERIOD     30      /*[ms]*/
+#define LV_DISP_DEF_REFR_PERIOD     10      /*[ms]*/
 
 /*Input device read period in milliseconds*/
-#define LV_INDEV_DEF_READ_PERIOD    30      /*[ms]*/
+#define LV_INDEV_DEF_READ_PERIOD    10      /*[ms]*/
 
 /*Use a custom tick source that tells the elapsed time in milliseconds.
  *It removes the need to manually update the tick with `lv_tick_inc()`)*/
@@ -82,7 +82,11 @@
  *(Not so important, you can adjust it to modify default sizes and spaces)*/
 /**
  * LV_DPI_DEF的计算公式如下：  DPI = 根号下（长边像素的平方+短边像素的平方）/英寸。
- * 对于LCD，2.2寸，320X240，所以计算公式为 DPI = 根号下(320320 + 240 240) / 2.2 ≈ 182.
+ * 对于LCD，2.2寸，320X240，所以计算公式为 DPI = √(320 320 + 240 240) / 2.2 ≈ 182.
+ */
+/*
+ * LV_DPI_DEF 注意这里，虽然LVGL的作者说这个没这么重要，但他会严重影响到LVGL的动画效果
+ * 你应该进行DPI的手动计算，例如480x272分辨率1.28英寸的屏幕，那么 DPI = ((√480*272) / 1.28) ≈ 89
  */
 #define LV_DPI_DEF                  220     /*[px/inch]*/
 
@@ -195,7 +199,7 @@ e.g. "stm32f769xx.h" or "stm32f429xx.h"*/
 
 /* 打开帧率显示 1，默认为0 关闭状态*/
 /*1: Show CPU usage and FPS count in the right bottom corner*/
-#define LV_USE_PERF_MONITOR     1
+#define LV_USE_PERF_MONITOR     0
 
 /* 打开内存占用信息：1 默认为0 关闭状态*/
 /*1: Show the used memory and the memory fragmentation  in the left bottom corner

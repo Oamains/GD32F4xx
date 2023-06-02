@@ -3,28 +3,20 @@
 //
 #include "tftlcd.h"
 #include "lcdfont.h"
+#include "src/misc/lv_color.h"
 
 
-void LCD_Fill_GAM(uint16_t xsta, uint16_t ysta, uint16_t xend, uint16_t yend, const void *color) {
-    uint32_t num, times, numlast;
-    num = (xend - xsta + 1) * (yend - ysta + 1) * 2;
-    times = 1;
-    LCD_Address_Set(xsta, ysta, xend, yend); //设置显示范围
-    LCD_CS_Clr();
-    //delay_us(2);
-    while (times) {
-        if (num > 65534) {
-            num -= 65534;
-            numlast = 65534;
-        } else {
-            times = 0;
-            numlast = num;
-        }
-        SPI2_DMA_Transmit((uint8_t *) color, 8, 1, numlast);
+void LCD_Fill_GAM(uint16_t xsta, uint16_t ysta, uint16_t xend, uint16_t yend, lv_color_t *color) {
+    uint32_t y = 0;
+    u16 height, width;
+    LCD_Address_Set(xsta, ysta, xend, yend);//设置显示范围
+    width = xend - xsta + 1; //得到填充的宽度
+    height = yend - ysta + 1; //高度
+    uint32_t area = width * height;
+    for (y = 0; y < area; y++) {
+        LCD_WR_DATA(color->full);
+        color++;
     }
-    LCD_CS_Set();
-    spi_i2s_data_frame_format_config(SPI2, SPI_FRAMESIZE_8BIT); //设置8位传输模式
-    spi_enable(SPI2);
 }
 
 void LCD_Fill(u16 xsta, u16 ysta, u16 xend, u16 yend, u16 color) {
